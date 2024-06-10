@@ -42,7 +42,7 @@ const MovieCard: React.FC<MovieCardProps> = ({movie, selectFavourite}) => {
                 avatar={
                     movie.favourite ? (
                         <Avatar sx={styles.avatar}>
-                            <FavoriteIcon />
+                            <FavoriteIcon/>
                         </Avatar>
                     ) : null
                 }
@@ -51,8 +51,9 @@ const MovieCard: React.FC<MovieCardProps> = ({movie, selectFavourite}) => {
                         {movie.title}{" "}
                     </Typography>
                 }
-            />
-            <CardMedia
+
+    />
+    <CardMedia
                 sx={styles.media}
                 image={
                     movie.poster_path
