@@ -1,4 +1,6 @@
-import React, { useContext } from "react"
+import React, { useContext } from "react";
+import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
+import WriteReview from "../components/cardIcons/writeReview";
 import PageTemplate from "../components/templateMovieListPage";
 import { MoviesContext } from "../contexts/moviesContext";
 import { useQueries } from "react-query";
@@ -63,7 +65,14 @@ const FavouriteMoviesPage: React.FC = () => {
             <PageTemplate
                 title="Favourite Movies"
                 movies={displayedMovies}
-                selectFavourite={toDo}
+                action={(movie) => {
+                    return (
+                        <>
+                            <RemoveFromFavourites {...movie} />
+                            <WriteReview {...movie} />
+                        </>
+                    );
+                }}
             />
             <MovieFilterUI
                 onFilterValuesChange={changeFilterValues}
