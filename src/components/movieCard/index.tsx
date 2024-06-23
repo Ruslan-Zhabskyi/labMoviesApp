@@ -16,7 +16,7 @@ import { BaseMovieProps } from "../../types/interfaces";
 import { Link } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { MoviesContext } from "../../contexts/moviesContext";
-
+import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 const styles = {
     card: { maxWidth: 345 },
     media: { height: 500 },
@@ -32,9 +32,9 @@ interface MovieCardProps {
 
 const MovieCard: React.FC<MovieCardProps> = ({movie, action}) => {
     const { favourites, addToFavourites } = useContext(MoviesContext);//NEW
-
+    const { watchLater, addToWatchLater } = useContext(MoviesContext);//NEW
     const isFavourite = favourites.find((id) => id === movie.id)? true : false;//NEW
-
+    const isWatchLater = watchLater.find((id) => id === movie.id)? true : false;//NEW
    // const handleAddToFavourite = (e: MouseEvent<HTMLButtonElement>) => {//NEW
    //     e.preventDefault();
     //    addToFavourites(movie);
@@ -44,9 +44,13 @@ const MovieCard: React.FC<MovieCardProps> = ({movie, action}) => {
         <Card sx={styles.card}>
             <CardHeader
                 avatar={
-                    isFavourite ? (   //CHANGED
+                    isFavourite ? (
                         <Avatar sx={styles.avatar}>
                             <FavoriteIcon />
+                        </Avatar>
+                    ) : isWatchLater ? (
+                        <Avatar sx={styles.avatar}>
+                            <PlaylistAddIcon />
                         </Avatar>
                     ) : null
                 }

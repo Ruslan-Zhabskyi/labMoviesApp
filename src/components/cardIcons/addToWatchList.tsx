@@ -9,7 +9,7 @@ const AddToWatchListIcon: React.FC<BaseMovieProps> = (movie) => {
 
     const onUserSelect = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-       // context.addToWatchList(movie)
+        context.addToWatchLater(movie)
     };
     return (
         <IconButton aria-label="add to watch list" onClick={onUserSelect}>
